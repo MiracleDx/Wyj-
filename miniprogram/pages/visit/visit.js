@@ -19,6 +19,7 @@ Component({
     areaValue: 0,
     levelValue: 0,
     spaceValue: 0,
+    HospitalInfoWidth: 0
   },
 
   onChange(e) {
@@ -26,6 +27,21 @@ Component({
       value: e.detail,
     });
     console.log(e.detail)
-  }
+  },
 
+  methods: {
+    selectDetail(event) {
+      console.log(event)
+    },
+  },
+
+  lifetimes: {
+    // 在组件实例进入页面节点树时执行
+    attached() {
+      let width = wx.getSystemInfoSync().windowWidth - 95;
+      this.setData({
+        HospitalInfoWidth: width
+      });
+    }
+  }
 });

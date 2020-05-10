@@ -1,8 +1,11 @@
 {
     "navigationBarTitleText": "出诊信息查询",
     "usingComponents": {
-        "van-search": "/miniprogram_npm/@vant/weapp/search/index",
-        "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
-        "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index"
+        "van-search": "@vant/weapp/search/index",
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "van-image": "@vant/weapp/image/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-icon": "@vant/weapp/icon/index"
       }
 }
