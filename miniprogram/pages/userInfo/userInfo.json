@@ -3,6 +3,6 @@
   "usingComponents": {
     "van-image": "@vant/weapp/image/index",
     "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index"
+    "van-cell-group": "@vant/weapp/cell-group/index"
   }
 }
