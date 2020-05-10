@@ -1,0 +1,3 @@
+.van-tabbar-item {
+  margin-top: 5rpx;
+}

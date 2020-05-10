@@ -1,0 +1,10 @@
+{
+  "component":true,
+  "usingComponents": {
+      "article": "../pages/article/article",
+      "visit": "../pages/visit/visit",
+      "userInfo": "../pages/userInfo/userInfo",
+      "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar/index",
+      "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item/index"
+  }
+}

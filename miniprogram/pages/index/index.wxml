@@ -1,0 +1,27 @@
+<!-- 个人信息页 -->
+<view style="display: {{active == 0 ? 'block' : 'none'}}">
+  <article/>
+</view>
+
+<!-- 个人信息页 -->
+<view style="display: {{active == 1 ? 'block' : 'none'}}">
+  <visit/>
+</view>
+
+
+<!-- 个人信息页 -->
+<view style="display: {{active == 2 ? 'block' : 'none'}}">
+  <userInfo/>
+</view>
+
+<van-tabbar
+  active="{{ active }}"
+  active-color="#07c160"
+  inactive-color="#000"
+  bind:change="onChange"
+  class="van-tabbar-item"
+>
+  <van-tabbar-item icon="orders-o">往期文章</van-tabbar-item>
+  <van-tabbar-item icon="search">出诊信息查询</van-tabbar-item>
+  <van-tabbar-item icon="user-o">我</van-tabbar-item>
+</van-tabbar>

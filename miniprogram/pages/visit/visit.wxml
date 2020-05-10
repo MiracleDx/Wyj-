@@ -1,0 +1,12 @@
+<van-search
+  value="{{ value }}"
+  input-align="center"
+  placeholder="请输入搜索关键词"
+  bind:change="onChange"
+/>
+
+<van-dropdown-menu>
+  <van-dropdown-item value="{{ areaValue }}" options="{{ area }}" />
+  <van-dropdown-item value="{{ levelValue }}" options="{{ level }}" />
+  <van-dropdown-item value="{{ spaceValue }}" options="{{ space }}" />
+</van-dropdown-menu>
