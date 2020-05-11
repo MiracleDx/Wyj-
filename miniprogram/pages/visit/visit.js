@@ -1,3 +1,5 @@
+let app = getApp();
+
 Component({
   data: {
     value: '',
@@ -19,7 +21,9 @@ Component({
     areaValue: 0,
     levelValue: 0,
     spaceValue: 0,
-    HospitalInfoWidth: 0
+    HospitalInfoWidth: 0,
+    hospitalDetailHeight: 0,
+    height: 0
   },
 
   onChange(e) {
@@ -38,10 +42,26 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached() {
+      console.log("aa", app.globalData)
+      
+      // 修改hospital距离
       let width = wx.getSystemInfoSync().windowWidth - 95;
       this.setData({
         HospitalInfoWidth: width
       });
+      
+      // 防止页面出现滚动条
+      let height = wx.getSystemInfoSync().windowHeight;
+      this.setData({
+        height: height - 5
+      });
+      // 减去顶部工具栏距离
+      wx.createSelectorQuery().in(this).select(".tool").boundingClientRect().selectViewport().scrollOffset().exec((res) => height = height - res[0].height);
+      // 减去医院详情和顶部工具栏的间隔 tab栏的距离 两个预估的hospital距离
+      height = height - 10 - app.globalData.tabBarHeight - 140;
+      this.setData({
+        hospitalDetailHeight: height
+      })
     }
   }
 });
