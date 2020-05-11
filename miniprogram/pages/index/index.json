@@ -1,5 +1,6 @@
 {
   "component":true,
+  "disableScroll": true,
   "usingComponents": {
       "article": "../pages/article/article",
       "visit": "../pages/visit/visit",
