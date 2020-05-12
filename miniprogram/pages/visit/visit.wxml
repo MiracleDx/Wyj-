@@ -7,21 +7,21 @@
       value="{{ value }}"
       input-align="center"
       placeholder="请输入搜索关键词"
-      bind:change="onChange"
+      bind:change="onChangeSearch"
     />
     
     <!--选项卡-->
     <van-dropdown-menu>
-      <van-dropdown-item value="{{ areaValue }}" options="{{ area }}" />
-      <van-dropdown-item value="{{ levelValue }}" options="{{ level }}" />
-      <van-dropdown-item value="{{ spaceValue }}" options="{{ space }}" />
+      <van-dropdown-item value="{{ areaValue }}" options="{{ area }}" bind:change="onChangeAreaOption"/>
+      <van-dropdown-item value="{{ levelValue }}" options="{{ level }}" bind:change="onChangeLevelOption"/>
+      <van-dropdown-item value="{{ spaceValue }}" options="{{ space }}" bind:change="onChangeSpaceOption"/>
     </van-dropdown-menu>
   </view>
   
   <template is="space" data="{{size: 10}}"/>
   <!--医院列表-->
   <scroll-view style="height: {{hospitalDetailHeight}}px; overflow: auto" scroll-y>
-    <view wx:for="{{20}}">
+    <view wx:for="{{hospitals}}">
       <view class="hospitalContainer" bindtap="selectDetail">
         <!--医院图片-->
         <van-image 
@@ -39,13 +39,13 @@
         <view class="hospitalDesc">
           <template is="space" data="{{size: 10}}"/>
           
-          <text class="hospitalName">北京协和医院{{index}}</text>
+          <text class="hospitalName">{{item.name}}</text>
     
           <template is="space" data="{{size: 10}}"/>
           
           <view class="hospitalInfo" style="width: {{HospitalInfoWidth}}px">
             <!--医院等级-->
-            <view>三级甲等</view>
+            <view>{{item.level}}</view>
             <view class="hospitalDistance">
               <van-icon size="10" name="location"/>13.6km
             </view>
