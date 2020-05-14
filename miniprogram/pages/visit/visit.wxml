@@ -1,4 +1,5 @@
 <import src="../../components/space/space.wxml"></import>
+<import src="../../components/hospital/hospital.wxml"></import>
 
 <view style="background-color: #fff; height: {{height}}px; overflow-y:hidden">
   <view class="tool">
@@ -22,35 +23,8 @@
   <!--医院列表-->
   <scroll-view style="height: {{hospitalDetailHeight}}px; overflow: auto" scroll-y>
     <view wx:for="{{hospitals}}">
-      <view class="hospitalContainer" bindtap="selectDetail">
-        <!--医院图片-->
-        <van-image 
-                width="70" 
-                height="70"
-                radius="5%"
-                src="https://img.yzcdn.cn/vant/cat.jpeg"
-                use-loading-slot
-                lazy-load
-                class="hospitalImage">
-          <van-loading slot="loading" type="spinner" size="20" vertical />
-        </van-image>
-        
-        <!--医院名称-->
-        <view class="hospitalDesc">
-          <template is="space" data="{{size: 10}}"/>
-          
-          <text class="hospitalName">{{item.name}}</text>
-    
-          <template is="space" data="{{size: 10}}"/>
-          
-          <view class="hospitalInfo" style="width: {{HospitalInfoWidth}}px">
-            <!--医院等级-->
-            <view>{{item.level}}</view>
-            <view class="hospitalDistance">
-              <van-icon size="10" name="location"/>13.6km
-            </view>
-          </view>
-        </view>
+      <view bindtap="selectDetail" data-gid="{{item}}" wx:key="index">
+        <template is="hospital" data="{{data: item, HospitalInfoWidth: HospitalInfoWidth}}"/>
       </view>
     </view>
   </scroll-view>

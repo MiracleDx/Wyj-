@@ -3,8 +3,8 @@ let app = getApp();
 Component({
   data: {
     value: '',
-    area: [],
-    level: [],
+    area: [{ text: '全部区域', value: 'all' }],
+    level: [{ text: '全部医院', value: 'all' }],
     space: [
       { text: '默认距离', value: 0 },
       { text: '最近', value: 1 },
@@ -22,7 +22,7 @@ Component({
 
   methods: {
     selectDetail(event) {
-      console.log(event)
+      console.log(event.currentTarget.dataset.gid)
     },
 
     // 搜索栏change事件
@@ -137,33 +137,48 @@ Component({
             })
           }
 
+          // 异步处理选项卡的任务
+          let func = function(arr) {
+            return new Promise(((resolve, reject) => {
+              let temp = [];
+              if (arr) {
+                let t = [...new Set(arr)];
+                t.forEach(data => {
+                  temp.push({
+                    "text": data,
+                    "value": data
+                  })
+                });
+                // 成功回调
+                return resolve(temp)
+              } else {
+                // 失败回调
+                return reject(temp)
+              }
+            }))
+          };
+          
           // todo 计算距离
           
           // 设置区域
-          let area = []
-          let t = [...new Set(hospitals.map(data => data.area))]
-          t.forEach(data => {
-            area.push({
-              "text": data,
-              "value": data
-            })
-          })
-          area.unshift({"text": "全部区域", "value": "all"})
-          
+          func(hospitals.map(data => data.area))
+              .then(data => {
+                data.unshift({"text": "全部区域", "value": "all"})
+                that.setData({
+                  area: data
+                })
+              });
           // 设置等级
-          let level = []
-          t = [...new Set(hospitals.map(data => data.level))]
-          t.forEach(data => {
-            level.push({
-              "text": data,
-              "value": data
-            })
-          })
-          level.unshift({"text": "全部医院", "value": "all"})
+          func(hospitals.map(data => data.level))
+              .then(data => {
+                data.unshift({"text": "全部医院", "value": "all"})
+                that.setData({
+                  level: data,
+                })
+              })
           
+          // 赋值医院变量
           that.setData({
-            area: area,
-            level: level,
             hospitals: hospitals,
             hospitals_tmp: hospitals
           })
