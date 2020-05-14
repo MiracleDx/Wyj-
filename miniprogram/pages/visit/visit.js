@@ -17,7 +17,6 @@ Component({
     hospitalDetailHeight: 0,
     height: 0,
     hospitals: [],
-    hospitals_tmp: []
   },
 
   methods: {
@@ -38,13 +37,14 @@ Component({
       // 都选中全部 恢复数组
       if (e.detail === 'all' && this.data.levelValue === 'all') {
         this.setData({
-          hospitals: this.data.hospitals_tmp,
+          // 同步取的数据
+          hospitals: wx.getStorageSync("hospitals"),
           areaValue: e.detail
         })
         return;
       }
 
-      let arr = this.data.hospitals_tmp
+      let arr = wx.getStorageSync("hospitals")
       
       if (e.detail !== 'all') {
         arr = arr.filter(data => data.area === e.detail)
@@ -66,13 +66,13 @@ Component({
       // 都选中全部 恢复数组
       if (e.detail === 'all' && this.data.areaValue === 'all') {
         this.setData({
-          hospitals: this.data.hospitals_tmp,
+          hospitals: wx.getStorageSync("hospitals"),
           levelValue: e.detail
         })
         return;
       }
 
-      let arr = this.data.hospitals_tmp
+      let arr = wx.getStorageSync("hospitals")
 
       if (e.detail !== 'all') {
         arr = arr.filter(data => data.level === e.detail)
@@ -180,8 +180,10 @@ Component({
           // 赋值医院变量
           that.setData({
             hospitals: hospitals,
-            hospitals_tmp: hospitals
           })
+          
+          // 同步存储本地
+          wx.setStorageSync("hospitals", hospitals)
         }
       });
     }
