@@ -1,0 +1,32 @@
+.hospitalContainer {
+    display: flex;
+    background-color: #fff;
+    margin-left: 15px;
+    padding-bottom: 5px;
+}
+
+.hospitalDesc {
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.hospitalName {
+    font-weight: bolder; 
+    font-size: 16px; 
+    color: #222; 
+}
+
+.hospitalInfo {
+    position: absolute;
+    display: inline-block;
+    height: 30px;
+    font-size: 13px; 
+    color: #888;
+}
+
+.hospitalDistance {
+    text-align: right;
+    position: absolute;
+    top: 2px;
+    right: 10px;
+}

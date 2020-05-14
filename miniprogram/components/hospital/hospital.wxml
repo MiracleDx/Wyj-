@@ -1,0 +1,34 @@
+<import src="../../components/space/space.wxml"></import>
+
+<template name="hospital">
+  <view class="hospitalContainer">
+    <!--医院图片-->
+    <van-image 
+            width="70" 
+            height="70"
+            radius="5%"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            use-loading-slot
+            lazy-load
+            class="hospitalImage">
+      <van-loading slot="loading" type="spinner" size="20" vertical />
+    </van-image>
+    
+    <!--医院名称-->
+    <view class="hospitalDesc">
+      <template is="space" data="{{size: 10}}"/>
+      
+      <text class="hospitalName">{{data.name}}</text>
+  
+      <template is="space" data="{{size: 10}}"/>
+      
+      <view class="hospitalInfo" style="width: {{HospitalInfoWidth}}px">
+        <!--医院等级-->
+        <view>{{data.level}}</view>
+        <view class="hospitalDistance">
+          <van-icon size="10" name="location"/>13.6km
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
