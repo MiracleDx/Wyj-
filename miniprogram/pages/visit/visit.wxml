@@ -7,7 +7,7 @@
     <van-search
       value="{{ value }}"
       input-align="center"
-      placeholder="请输入搜索关键词"
+      placeholder="区域/医院"
       bind:change="onChangeSearch"
     />
     
@@ -21,9 +21,9 @@
   
   <template is="space" data="{{size: 10}}"/>
   <!--医院列表-->
-  <scroll-view style="height: {{hospitalDetailHeight}}px; overflow: auto" scroll-y>
+  <scroll-view style="height: {{hospitalDetailHeight}}px; " scroll-y>
     <view wx:for="{{hospitals}}">
-      <view bindtap="selectDetail" data-gid="{{item}}" wx:key="index">
+      <view bindtap="selectHospital" data-hospital="{{item}}" wx:key="index">
         <template is="hospital" data="{{data: item, HospitalInfoWidth: HospitalInfoWidth}}"/>
       </view>
     </view>

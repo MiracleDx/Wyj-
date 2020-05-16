@@ -1,0 +1,54 @@
+<import src="../../../components/space/space.wxml"></import>
+<!--医院-->
+<view class="container" style="height: {{height}}px">
+    <view class="header-container">
+        <!--搜索框-->
+        <van-search
+                value="{{ value }}"
+                placeholder="搜索"
+                bind:change="onChangeSearch"
+        />
+        
+        <view class="header">
+
+            <van-image
+                    round
+                    width="70"
+                    height="70"
+                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    use-loading-slot
+                    lazy-load
+                    class="hospitalImage">
+                <van-loading slot="loading" type="spinner" size="20" vertical />
+            </van-image>
+            
+            <view class="header-top">
+                <view class="hospitalName">{{hospital}}</view>
+                <!-- 距离信息-->
+                <view class="space">
+                    <van-icon name="location" class="space-icon" />距离您13.6km
+                </view>
+                <view class="address">
+                    <van-icon name="map-marked" class="space-icon" />北京市西城区
+                </view>
+            </view>
+
+            <van-icon class="collect-icon" size="35px" name="star-o" />
+            <!--<van-icon class="collect-icon" size="25px" name="star" />-->
+            
+        </view>
+    </view>
+    
+    <view class="tree-container" style="height: {{treeHeight}}px;">
+        <!--选项树-->
+        <van-tree-select
+                height="100%"
+                items="{{ items }}"
+                main-active-index="{{ mainActiveIndex }}"
+                active-id="{{ activeId }}"
+                bind:click-nav="onClickNav"
+                bind:click-item="onClickItem"
+        />
+    </view>
+</view>
+

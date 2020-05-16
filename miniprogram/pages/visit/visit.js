@@ -20,8 +20,12 @@ Component({
   },
 
   methods: {
-    selectDetail(event) {
-      console.log(event.currentTarget.dataset.gid)
+    // 点击事件
+    selectHospital(event) {
+      let hospital = event.currentTarget.dataset.hospital
+      wx.navigateTo({
+        url: "/pages/visit/office/office?hospital=" + hospital.name + "&HospitalInfoWidth=" + this.data.HospitalInfoWidth
+      })
     },
 
     // 搜索栏change事件
@@ -116,8 +120,23 @@ Component({
           .boundingClientRect()
           .selectViewport()
           .scrollOffset().exec((res) => height = height - res[0].height);
+      
+      let isPhoneX = false
+      wx.getSystemInfo({
+         success(res) {
+           let model = res.model
+           let iphoneArr = ['iPhone X', 'iPhone 11']
+           iphoneArr.forEach(phone => {
+             // iPhone X以上机型需要额外处理
+             if (model.search(phone) !== -1) {
+               isPhoneX = true
+             }
+           })
+         }
+      })
+      
       // 减去医院详情和顶部工具栏的间隔 tab栏的距离 两个预估的hospital距离
-      height = height - 10 - app.globalData.tabBarHeight - 140;
+      height = height - 10 - app.globalData.tabBarHeight - (isPhoneX ? 140 : 100);
       this.setData({
         hospitalDetailHeight: height
       });
