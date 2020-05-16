@@ -8,9 +8,9 @@
     "pages/userInfo/history/history"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Wyj+",
     "navigationBarTextStyle": "black"
   },
