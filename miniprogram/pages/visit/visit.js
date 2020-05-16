@@ -17,6 +17,10 @@ Component({
     hospitalDetailHeight: 0,
     height: 0,
     hospitals: [],
+    location: {
+      latitude: 0,
+      longitude: 0
+    }
   },
 
   methods: {
@@ -24,7 +28,7 @@ Component({
     selectHospital(event) {
       let hospital = event.currentTarget.dataset.hospital
       wx.navigateTo({
-        url: "/pages/visit/office/office?hospital=" + hospital.name + "&HospitalInfoWidth=" + this.data.HospitalInfoWidth
+        url: "/pages/visit/doctor/doctor?hospital=" + hospital.name + "&HospitalInfoWidth=" + this.data.HospitalInfoWidth
       })
     },
 
@@ -102,6 +106,26 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached() {
+      console.log("渲染hospital数据")
+      let that = this
+      if (wx.getStorageSync("isAuthorized")) {
+        // 获取用户地理位置
+        wx.getLocation({
+          success: (res) => {
+            console.log('获取地址位置成功：', res)
+            that.setData({
+              location: {
+                latitude: res.latitude,
+                longitude: res.longitude
+              }
+            })
+          },
+          fail: (res) => {
+            console.log('失败：', res)
+          },
+        })
+      }
+      
       // 修改hospital距离
       let width = wx.getSystemInfoSync().windowWidth - 95;
       this.setData({
@@ -145,7 +169,6 @@ Component({
       // 获取数据库引用
       const db = wx.cloud.database();
       // 查询数据
-      let that = this
       db.collection('hospital').get({
         success(res) {
           // 获取医院信息

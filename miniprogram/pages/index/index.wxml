@@ -1,16 +1,16 @@
 <!-- 个人信息页 -->
-<view style="display: {{active == 0 ? 'block' : 'none'}}">
+<view style="display: {{active === 0 ? 'block' : 'none'}}">
   <article/>
 </view>
 
 <!-- 个人信息页 -->
-<view style="display: {{active == 1 ? 'block' : 'none'}}">
+<view wx:if="{{active === 1}}">
   <visit/>
 </view>
 
 
 <!-- 个人信息页 -->
-<view style="display: {{active == 2 ? 'block' : 'none'}}">
+<view style="display: {{active === 2 ? 'block' : 'none'}}">
   <userInfo/>
 </view>
 

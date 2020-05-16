@@ -17,8 +17,7 @@ App({
     }
 
     this.globalData = {
-      tabBarHeight: 50,
-      isAuthorized: false
+      tabBarHeight: 50
     }
   }
 })

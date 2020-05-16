@@ -17,7 +17,7 @@ Component({
                     if (res.authSetting['scope.userInfo']) {
                         wx.getUserInfo({
                             success: function (res) {
-                                console.log("查看是否授权", res)
+                                console.log("用户信息页查看是否授权", res)
                                 // todo 从数据获取用户信息
                                 // 用户已经授权过
                                 // wx.switchTab({
@@ -26,7 +26,17 @@ Component({
                                 that.setData({
                                     isAuthorized: true
                                 })
-                                app.globalData.isAuthorized = true
+
+                                wx.setStorageSync("isAuthorized", true)
+                                // 获取用户地理位置
+                                wx.getLocation({
+                                    success: (res) => {
+                                        console.log('用户信息页已获取授权并获取地理位置成功：', res)
+                                    },
+                                    fail: (res) => {
+                                        console.log('失败：', res)
+                                    },
+                                })
                             }
                         });
                     }
@@ -38,7 +48,7 @@ Component({
     methods: {
         bindGetUserInfo(e) {
             if (e.detail.userInfo) {
-                console.log("查看是否授权", e.detail.userInfo)
+                console.log("登陆查看是否授权", e.detail.userInfo)
                 // 用户按了允许授权按钮
                 // todo 可以插数据进入数据库 
                 // 授权成功后，跳转进入小程序首页
@@ -48,7 +58,17 @@ Component({
                 this.setData({
                     isAuthorized: true
                 })
-                app.globalData.isAuthorized = true
+
+                wx.setStorageSync("isAuthorized", true)
+                // 获取用户地理位置
+                wx.getLocation({
+                    success: (res) => {
+                        console.log('登陆已获取授权并获取地理位置成功：', res)
+                    },
+                    fail: (res) => {
+                        console.log('失败：', res)
+                    },
+                })
             } else {
                 //用户按了拒绝按钮
                 wx.showModal({
