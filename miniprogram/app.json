@@ -3,6 +3,8 @@
     "pages/index/index",
     "pages/article/article",
     "pages/visit/visit",
+    "pages/visit/office/office",
+    "pages/visit/doctor/doctor",
     "pages/userInfo/userInfo",
     "pages/userInfo/collect/collect",
     "pages/userInfo/history/history"

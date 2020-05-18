@@ -28,7 +28,7 @@ Component({
     selectHospital(event) {
       let hospital = event.currentTarget.dataset.hospital
       wx.navigateTo({
-        url: "/pages/visit/doctor/doctor?hospital=" + hospital.name + "&HospitalInfoWidth=" + this.data.HospitalInfoWidth
+        url: "/pages/visit/office/office?hospital=" + hospital.name + "&HospitalInfoWidth=" + this.data.HospitalInfoWidth
       })
     },
 
@@ -106,6 +106,7 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached() {
+      wx.showToast({title: '加载中', icon: 'loading', duration: 10000});
       console.log("渲染hospital数据")
       let that = this
       if (wx.getStorageSync("isAuthorized")) {
@@ -226,6 +227,7 @@ Component({
           
           // 同步存储本地
           wx.setStorageSync("hospitals", hospitals)
+          wx.hideToast()
         }
       });
     }
