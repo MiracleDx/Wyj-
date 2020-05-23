@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/article/article",
+    "pages/article/webview/webview",
     "pages/visit/visit",
     "pages/visit/office/office",
     "pages/visit/doctor/doctor",

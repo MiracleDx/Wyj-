@@ -33,7 +33,7 @@
       <view class="article-time">{{data.content.create_time}}</view>
       <view class="articles">
         <block wx:for="{{data.content.news_item}}" wx:key="*this">
-          <view class="article-item">
+          <view class="article-item" bindtap="selectArticle" data-url="{{item.url}}" >
             <van-image
                     width="50px"
                     height="50px"

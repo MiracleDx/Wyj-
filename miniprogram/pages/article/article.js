@@ -33,5 +33,16 @@ Component({
                 wx.hideToast()
             })
         }
+    },
+    
+    methods: {
+        selectArticle(event) {
+            let url = event.currentTarget.dataset.url
+            url = encodeURIComponent(url)
+            console.log(url)
+            wx.navigateTo({
+                url: "/pages/article/webview/webview?url=" + url
+            })
+        },
     }
 })
