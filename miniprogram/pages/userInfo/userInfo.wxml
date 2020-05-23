@@ -13,7 +13,6 @@
       授权登录
     </button>
 
-    <van-dialog id="van-dialog" />
   </view>
   
   <view wx:else>

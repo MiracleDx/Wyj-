@@ -1,4 +1,55 @@
-<view>
-  <text>我是往期文章</text>
-  <!-- <web-view src="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token="></web-view> -->
+<view class="container">
+  <swiper autoplay>
+    <block wx:for="{{backgrounds}}" wx:key="*this">
+      <swiper-item>
+        <van-image
+                width="100%"
+                height="100%"
+                src="{{item}}"
+                use-loading-slot
+                lazy-load>
+            <van-loading slot="loading" type="spinner" size="20" vertical />
+        </van-image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="body">
+    <!--文化-->
+    <view class="culture">
+      <view class="left">
+        <view>企业文化</view>
+      </view>
+      
+      <view class="line" />
+      <view class="right">
+        <view>员工风采</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="foot">
+    <view wx:for="{{articles}}" wx:for-item="data" wx:key="{{item.media_id}}">
+      <view class="article-time">{{data.content.create_time}}</view>
+      <view class="articles">
+        <block wx:for="{{data.content.news_item}}" wx:key="*this">
+          <view class="article-item">
+            <van-image
+                    width="50px"
+                    height="50px"
+                    src="{{item.thumb_url}}"
+                    use-loading-slot
+                    lazy-load
+                    class="article-item-image">
+              <van-loading slot="loading" type="spinner" size="20" vertical />
+            </van-image>
+            <view class="article-item-title">{{item.title}}</view>
+          </view>
+          <view class="split"/>
+        </block>
+      </view>
+    </view>
+    
+    <view style="height: 900px"/>
+  </scroll-view>
 </view>

@@ -1,3 +1,8 @@
 {
-    "navigationBarTitleText": "往期文章"
+    "navigationBarTitleText": "往期文章",
+    "usingComponents": {
+        "van-image": "@vant/weapp/image/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-divider": "@vant/weapp/divider/index"
+    }
 }
